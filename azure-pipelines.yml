@@ -23,4 +23,4 @@ steps:
     command: 'scan'
     scanType: 'containerimage'
     image: 'ghcr.io/liudongxia113/agilebuilder-v10:latest'
-    extraArguments: '--docker-username liudongxia113 --docker-password $(GitHubPAT)'
+    extraArguments: '--docker-password $(GitHubPAT)'
