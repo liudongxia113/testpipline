@@ -21,9 +21,15 @@ steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
   displayName: 'Login to GitHub Container Registry'
+
+
+- script: |
+    docker pull ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest
+  displayName: 'Docker Pull GitHub Container Registry'
+  
 - task: wiz@1
   inputs:
     serviceConnectionId: 'wiz-qdts'
     command: 'scan'
     scanType: 'containerimage'
-    image: 'ghcr.io/liudongxia113/agilebuilder-v10:latest'
+    image: 'ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest'
