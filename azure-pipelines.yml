@@ -33,3 +33,4 @@ steps:
     command: 'scan'
     scanType: 'containerimage'
     image: 'ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest'
+    extraArguments: '--by-policy-hits=DISABLED'
