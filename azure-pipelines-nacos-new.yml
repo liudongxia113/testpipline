@@ -10,10 +10,21 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
 - script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    docker pull nacos/nacos-server:latest
+  displayName: 'pull docker from nacos'
+
+- task: wiz@1
+  inputs:
+    serviceConnectionId: 'wiz-qdts'
+    command: 'scan'
+    scanType: 'containerimage'
+    image: 'nacos/nacos-server:latest'
+    byPolicyHits: DISABLED
+# - task: JFrogDocker@1
+#   inputs:
+#    command: 'Push'
+#    artifactoryConnection: 'QDTS_Artifactory_V2'
+#    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/nacos-server:latest'
+#    threads: '3'
+#    skipLogin: false
