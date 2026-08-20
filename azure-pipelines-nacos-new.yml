@@ -19,7 +19,7 @@ steps:
     serviceConnectionId: 'wiz-qdts'
     command: 'scan'
     scanType: 'containerimage'
-    image: 'nacos/nacos-server:latest'
+    image: 'nacos/nacos-server:v3.2.3'
     byPolicyHits: DISABLED
 # - task: JFrogDocker@1
 #   inputs:
