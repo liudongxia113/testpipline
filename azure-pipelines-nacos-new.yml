@@ -11,7 +11,7 @@ pool:
 
 steps:
 - script: |
-    docker pull nacos/nacos-server:v3.2.3
+    docker pull nacos/nacos-server:v3.1.0
   displayName: 'pull docker from nacos'
 
 - task: wiz@1
@@ -19,7 +19,7 @@ steps:
     serviceConnectionId: 'wiz-qdts'
     command: 'scan'
     scanType: 'containerimage'
-    image: 'nacos/nacos-server:v3.2.3'
+    image: 'nacos/nacos-server:v3.1.0'
     byPolicyHits: DISABLED
 # - task: JFrogDocker@1
 #   inputs:
