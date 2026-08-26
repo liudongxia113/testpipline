@@ -26,6 +26,6 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'QDTS_Artifactory_V2'
-    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/nacos-server:latest'
+    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/nacos-server:3.2.3'
     threads: '3'
     skipLogin: false
