@@ -13,6 +13,7 @@ steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
     docker pull ghcr.io/$(GitHubUsername)/nacos-server:3.2.3
+    docker tag ghcr.io/$(GitHubUsername)/purveyor:latest cat-docker.artifacts.cat.com/chinaqdts/nacos-server:3.2.3
   displayName: 'Login and pull docker from GitHub'
 
 - task: wiz@1
