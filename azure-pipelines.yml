@@ -38,4 +38,4 @@ steps:
     artifactoryConnection: 'QDTS_Artifactory_V2'
     imageName: 'cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:latest'
     threads: '3'
-    skipLogin: true
+    skipLogin: false
