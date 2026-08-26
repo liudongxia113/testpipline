@@ -13,8 +13,8 @@ steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
     docker pull ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest
+    docker tag ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:latest
 #    docker pull ghcr.io/$(GitHubUsername)/purveyor:latest
-#    docker tag ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:latest
 #    docker tag ghcr.io/$(GitHubUsername)/purveyor:latest cat-docker.artifacts.cat.com/chinaqdts/purveyor:latest
   displayName: 'Login and pull docker from GitHub'
 
