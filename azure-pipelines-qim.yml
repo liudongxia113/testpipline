@@ -26,7 +26,7 @@ steps:
 #- task: JFrogDocker@1
 #  inputs:
 #    command: 'Push'
-#    artifactoryConnection: 'QDTS_Artifactory_V2'
+#    artifactoryConnection: 'QDTS_Artifactory_P'
 #    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/qim:latest'
 #    threads: '3'
 #    skipLogin: false
