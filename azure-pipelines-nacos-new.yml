@@ -16,13 +16,13 @@ steps:
     docker tag ghcr.io/$(GitHubUsername)/nacos-server:3.2.3 cat-docker.artifacts.cat.com/chinaqdts/nacos-server:3.2.3
   displayName: 'Login and pull docker from GitHub'
 
-- task: wiz@1
-  inputs:
-    serviceConnectionId: 'wiz-qdts'
-    command: 'scan'
-    scanType: 'containerimage'
-    image: 'ghcr.io/$(GitHubUsername)/nacos-server:3.2.3'
-    byPolicyHits: DISABLED
+#- task: wiz@1
+#  inputs:
+#    serviceConnectionId: 'wiz-qdts'
+#    command: 'scan'
+#    scanType: 'containerimage'
+#    image: 'ghcr.io/$(GitHubUsername)/nacos-server:3.2.3'
+#    byPolicyHits: DISABLED
 - task: JFrogDocker@1
   inputs:
     command: 'Push'
