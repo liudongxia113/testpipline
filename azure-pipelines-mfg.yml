@@ -12,8 +12,8 @@ pool:
 steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
-    docker pull ghcr.io/$(GitHubUsername)/mfg:latest
-#    docker tag ghcr.io/$(GitHubUsername)/mfg:latest cat-docker.artifacts.cat.com/chinaqdts/mfg:latest
+    docker pull ghcr.io/$(GitHubUsername)/ktbl-mfg:latest
+#    docker tag ghcr.io/$(GitHubUsername)/ktbl-mfg:latest cat-docker.artifacts.cat.com/chinaqdts/ktbl-mfg:latest
   displayName: 'Login and pull docker from GitHub'
 
 - task: wiz@1
@@ -21,12 +21,12 @@ steps:
     serviceConnectionId: 'wiz-qdts'
     command: 'scan'
     scanType: 'containerimage'
-    image: 'ghcr.io/$(GitHubUsername)/mfg:latest'
+    image: 'ghcr.io/$(GitHubUsername)/ktbl-mfg:latest'
     byPolicyHits: DISABLED
 #- task: JFrogDocker@1
 #  inputs:
 #    command: 'Push'
 #    artifactoryConnection: 'QDTS_Artifactory_P'
-#    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/mfg:latest'
+#    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/ktbl-mfg:latest'
 #    threads: '3'
 #    skipLogin: false
