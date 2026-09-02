@@ -12,8 +12,8 @@ pool:
 steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
-    docker pull ghcr.io/$(GitHubUsername)/agilebuilder-v10:0.0.1
-    docker tag ghcr.io/$(GitHubUsername)/agilebuilder-v10:0.0.1 cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:0.0.1
+    docker pull ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest
+    docker tag ghcr.io/$(GitHubUsername)/agilebuilder-v10:latest cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:latest
   displayName: 'Login and pull docker from GitHub'
 
 #- task: wiz@1
@@ -27,6 +27,6 @@ steps:
   inputs:
     command: 'Push'
     artifactoryConnection: 'QDTS_Artifactory_P'
-    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:0.0.1'
+    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/agilebuilder-v10:latest'
     threads: '3'
     skipLogin: false
