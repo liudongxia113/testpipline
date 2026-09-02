@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+- script: |
+    echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
+    docker pull ghcr.io/$(GitHubUsername)/ktbl-qim:latest
+#    docker tag ghcr.io/$(GitHubUsername)/ktbl-qim:latest cat-docker.artifacts.cat.com/chinaqdts/ktbl-qim:latest
+  displayName: 'Login and pull docker from GitHub'
+
+- task: wiz@1
+  inputs:
+    serviceConnectionId: 'wiz-qdts'
+    command: 'scan'
+    scanType: 'containerimage'
+    image: 'ghcr.io/$(GitHubUsername)/ktbl-qim:latest'
+    byPolicyHits: DISABLED
+#- task: JFrogDocker@1
+#  inputs:
+#    command: 'Push'
+#    artifactoryConnection: 'QDTS_Artifactory_P'
+#    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/ktbl-qim:latest'
+#    threads: '3'
+#    skipLogin: false
