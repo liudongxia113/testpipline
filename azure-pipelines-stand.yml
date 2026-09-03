@@ -23,10 +23,10 @@ steps:
     scanType: 'containerimage'
     image: 'ghcr.io/$(GitHubUsername)/ktbl-stand:latest'
     byPolicyHits: DISABLED
-#- task: JFrogDocker@1
-#  inputs:
-#    command: 'Push'
-#    artifactoryConnection: 'QDTS_Artifactory_P'
-#    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/ktbl-stand:latest'
-#    threads: '3'
-#    skipLogin: false
+- task: JFrogDocker@1
+  inputs:
+    command: 'Push'
+    artifactoryConnection: 'QDTS_Artifactory_P'
+    imageName: 'cat-docker.artifacts.cat.com/chinaqdts/ktbl-stand:latest'
+    threads: '3'
+    skipLogin: false
