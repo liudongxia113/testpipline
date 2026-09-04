@@ -13,7 +13,7 @@ steps:
 - script: |
     echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
     docker pull ghcr.io/$(GitHubUsername)/ktbl-stand:latest
-#    docker tag ghcr.io/$(GitHubUsername)/ktbl-stand:latest cat-docker.artifacts.cat.com/chinaqdts/ktbl-stand:latest
+    docker tag ghcr.io/$(GitHubUsername)/ktbl-stand:latest cat-docker.artifacts.cat.com/chinaqdts/ktbl-stand:latest
   displayName: 'Login and pull docker from GitHub'
 
 - task: wiz@1
