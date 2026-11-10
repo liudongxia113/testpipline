@@ -11,22 +11,10 @@ pool:
 
 steps:
 - script: |
-    set -euo pipefail
-    source_image="ghcr.io/${GH_USERNAME}/ktbl-mfg:prod"
-    target_image="cat-docker.artifacts.cat.com/chinaqdts/ktbl-mfg:prod"
-    printf '%s' "$GH_PAT" | docker login ghcr.io -u "$GH_USERNAME" --password-stdin
-    timeout --kill-after=15s 10m docker pull "$source_image" || {
-      rc=$?
-      echo "拉取 MFG 镜像失败，退出码：$rc"
-      sudo -n journalctl -u docker.service --since '15 minutes ago' --no-pager -n 80 |
-        sed -E 's@(https?://[^[:space:]"?]+)\?[^[:space:]"]+@\1?[redacted]@g' || true
-      exit "$rc"
-    }
-    docker tag "$source_image" "$target_image"
+    echo $(GitHubPAT) | docker login ghcr.io -u $(GitHubUsername) --password-stdin
+    docker pull ghcr.io/$(GitHubUsername)/ktbl-mfg:prod
+    docker tag ghcr.io/$(GitHubUsername)/ktbl-mfg:prod cat-docker.artifacts.cat.com/chinaqdts/ktbl-mfg:prod
   displayName: 'Login and pull docker from GitHub'
-  env:
-    GH_PAT: $(GitHubPAT)
-    GH_USERNAME: $(GitHubUsername)
 
 - task: wiz@1
   inputs:
